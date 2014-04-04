@@ -1,0 +1,26 @@
+﻿@model RepositoryExample.Web.Models.CharacterIndexViewModel
+
+@{
+    ViewBag.Title = "Characters";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header clearfix">
+            <h1 class="pull-left">@Localization.Characters</h1>
+            <div class="btn-toolbar pull-right">
+                <div class="btn-group">
+                    @Html.ActionLink(Localization.New, "Create", "Character", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        
+        @Html.Partial("_TableCharacters", Model.Characters)
+
+    </div>
+</div>

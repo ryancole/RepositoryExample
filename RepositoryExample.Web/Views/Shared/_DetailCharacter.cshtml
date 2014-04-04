@@ -1,0 +1,136 @@
+﻿@model RepositoryExample.Entity.Character
+
+@{
+    
+    var image = "";
+    var description = "";
+
+    if (Model.Race == RepositoryExample.Entity.CharacterRace.Orc)
+    {
+        switch (Model.Class)
+        {
+            case RepositoryExample.Entity.CharacterClass.DeathKnight:
+                image = Url.Content("~/public/images/orcdeathknight.jpg");
+                description = "Orc Death Knight";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Mage:
+                image = Url.Content("~/public/images/orcmage.jpg");
+                description = "Orc Mage";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Warrior:
+                image = Url.Content("~/public/images/orcwarrior.jpg");
+                description = "Orc Warrior";
+                break;
+        }
+    }
+    else if (Model.Race == RepositoryExample.Entity.CharacterRace.BloodElf)
+    {
+        switch (Model.Class)
+        {
+            case RepositoryExample.Entity.CharacterClass.DeathKnight:
+                image = Url.Content("~/public/images/bloodelfdeathknight.jpg");
+                description = "Blood Elf Death Knight";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Mage:
+                image = Url.Content("~/public/images/bloodelfmage.jpg");
+                description = "Blood Elf Mage";
+                break;
+        }
+    }
+    else if (Model.Race == RepositoryExample.Entity.CharacterRace.Gnome)
+    {
+        switch (Model.Class)
+        {
+            case RepositoryExample.Entity.CharacterClass.DeathKnight:
+                image = Url.Content("~/public/images/gnomedeathknight.jpg");
+                description = "Gnome Death Knight";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Mage:
+                image = Url.Content("~/public/images/gnomemage.jpg");
+                description = "Gnome Mage";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Warrior:
+                image = Url.Content("~/public/images/gnomewarrior.jpg");
+                description = "Gnome Warrior";
+                break;
+        }
+    }
+    else if (Model.Race == RepositoryExample.Entity.CharacterRace.Human)
+    {
+        switch (Model.Class)
+        {
+            case RepositoryExample.Entity.CharacterClass.DeathKnight:
+                image = Url.Content("~/public/images/humandeathknight.jpg");
+                description = "Human Death Knight";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Mage:
+                image = Url.Content("~/public/images/humanmage.jpg");
+                description = "Human Mage";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Warrior:
+                image = Url.Content("~/public/images/humanwarrior.jpg");
+                description = "Human Warrior";
+                break;
+        }
+    }
+    else if (Model.Race == RepositoryExample.Entity.CharacterRace.Tauren)
+    {
+        switch (Model.Class)
+        {
+            case RepositoryExample.Entity.CharacterClass.DeathKnight:
+                image = Url.Content("~/public/images/taurendeathknight");
+                description = "Tauren Death Knight";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Druid:
+                image = Url.Content("~/public/images/taurendruid.jpg");
+                description = "Tauren Druid";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Mage:
+                image = Url.Content("~/public/images/taurenmage.jpg");
+                description = "Tauren Mage";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Warrior:
+                image = Url.Content("~/public/images/taurenwarrior.jpg");
+                description = "Tauren Warrior";
+                break;
+        }
+    }
+    else if (Model.Race == RepositoryExample.Entity.CharacterRace.Worgen)
+    {
+        switch (Model.Class)
+        {
+            case RepositoryExample.Entity.CharacterClass.DeathKnight:
+                image = Url.Content("~/public/images/worgendeathknight.jpg");
+                description = "Worgen Death Knight";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Druid:
+                image = Url.Content("~/public/images/worgendruid.jpg");
+                description = "Worgen Druid";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Mage:
+                image = Url.Content("~/public/images/worgenmage.jpg");
+                description = "Worgen Mage";
+                break;
+
+            case RepositoryExample.Entity.CharacterClass.Warrior:
+                image = Url.Content("~/public/images/worgenwarrior.jpg");
+                description = "Worgen Warrior";
+                break;
+        }
+    }
+    
+}
+
+<img src="@image" alt="@description" class="img-rounded" />

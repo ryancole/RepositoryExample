@@ -1,0 +1,20 @@
+﻿@model RepositoryExample.Entity.CharacterClass
+
+@switch (Model)
+{
+    case RepositoryExample.Entity.CharacterClass.DeathKnight:
+        <img src="@Url.Content("~/public/images/deathknight.jpg")" alt="Death Knight" />
+        break;
+
+    case RepositoryExample.Entity.CharacterClass.Druid:
+        <img src="@Url.Content("~/public/images/druid.jpg")" alt="Druid" />
+        break;
+
+    case RepositoryExample.Entity.CharacterClass.Mage:
+        <img src="@Url.Content("~/public/images/mage.jpg")" alt="Mage" />
+        break;
+
+    case RepositoryExample.Entity.CharacterClass.Warrior:
+        <img src="@Url.Content("~/public/images/warrior.jpg")" alt="Warrior" />
+        break;
+}

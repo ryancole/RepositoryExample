@@ -1,0 +1,25 @@
+﻿@model RepositoryExample.Web.Models.CharacterCreateViewModel
+
+<fieldset>
+    <legend>@Localization.New @Localization.Character</legend>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Faction)
+        @Html.DropDownListFor(m => m.Faction, Model.CharacterFactions, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Faction)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Race)
+        @Html.DropDownListFor(m => m.Race, Model.CharacterRaces, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Race)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Class)
+        @Html.DropDownListFor(m => m.Class, Model.CharacterClasses, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Class)
+    </div>
+</fieldset>

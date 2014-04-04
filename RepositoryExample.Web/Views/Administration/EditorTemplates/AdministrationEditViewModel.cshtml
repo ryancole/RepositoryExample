@@ -1,0 +1,10 @@
+﻿@model RepositoryExample.Web.Models.AdministrationEditViewModel
+
+<fieldset>
+    <legend>Edit @Model.Character.Name</legend>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Level)
+        @Html.TextBoxFor(m => m.Level, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(m => m.Level)
+    </div>
+</fieldset>

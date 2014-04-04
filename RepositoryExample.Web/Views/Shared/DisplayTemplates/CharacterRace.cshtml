@@ -1,0 +1,28 @@
+﻿@model RepositoryExample.Entity.CharacterRace
+
+@switch (Model)
+{
+    case RepositoryExample.Entity.CharacterRace.BloodElf:
+        <img src="@Url.Content("~/public/images/bloodelf.jpg")" alt="Blood Elf" />
+        break;
+
+    case RepositoryExample.Entity.CharacterRace.Gnome:
+        <img src="@Url.Content("~/public/images/gnome.jpg")" alt="Gnome" />
+        break;
+
+    case RepositoryExample.Entity.CharacterRace.Human:
+        <img src="@Url.Content("~/public/images/human.jpg")" alt="Human" />
+        break;
+
+    case RepositoryExample.Entity.CharacterRace.Orc:
+        <img src="@Url.Content("~/public/images/orc.jpg")" alt="Orc" />
+        break;
+
+    case RepositoryExample.Entity.CharacterRace.Tauren:
+        <img src="@Url.Content("~/public/images/tauren.jpg")" alt="Tauren" />
+        break;
+
+    case RepositoryExample.Entity.CharacterRace.Worgen:
+        <img src="@Url.Content("~/public/images/worgen.jpg")" alt="Worgen" />
+        break;
+}

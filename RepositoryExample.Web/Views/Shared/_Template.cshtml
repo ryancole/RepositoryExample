@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title &mdash; Warcraft Characters</title>
+
+        @Styles.Render("~/public/styles/bootstrap", "~/public/styles/warcraft")
+
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="@Url.Action("Index", "Character")">
+                        <img src="@Url.Content("~/public/images/wow.png")" class="img-responsive" alt="Warcraft Characters" id="wowlogo" />
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="navbar navbar-default navbar-inverse" role="navigation">
+                        
+                        @if (Request.IsAuthenticated)
+                        {
+                            <ul class="nav navbar-nav pull-left">
+                                <li>@Html.ActionLink(Localization.Characters, "Index", "Character")</li>
+
+                                @if (ViewBag.isAdmin)
+                                {
+                                    <li>@Html.ActionLink(Localization.Administration, "Index", "Administration")</li>
+                                }
+
+                            </ul>
+                        }
+
+                        <ul class="nav navbar-nav pull-right">
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink(Localization.Logout, "Logout", "Account")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink(Localization.Login, "Login", "Account")</li>
+                                <li>@Html.ActionLink(Localization.Register, "Register", "Account")</li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            @RenderBody()
+
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <hr />
+                    <ul class="list-inline">
+                        <li>@Html.ActionLink(Localization.Characters, "Index", "Character")</li>
+
+                        @if (ViewBag.isAdmin)
+                        {
+                            <li>@Html.ActionLink(Localization.Administration, "Index", "Administration")</li>
+                        }
+
+                        <li>&mdash;</li>
+                        <li>@Html.ActionLink("English", "Index", "Character", new { language = "en" }, null)</li>
+                        <li>@Html.ActionLink("Español", "Index", "Character", new { language = "es" }, null)</li>
+                        <li>@Html.ActionLink("العربية", "Index", "Character", new { language = "ar" }, null)</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

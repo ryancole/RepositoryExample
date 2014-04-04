@@ -1,0 +1,12 @@
+﻿@model RepositoryExample.Entity.CharacterFaction
+
+@switch (Model)
+{
+    case RepositoryExample.Entity.CharacterFaction.Alliance:
+        <img src="@Url.Content("~/public/images/alliance.jpg")" alt="Alliance" />
+        break;
+
+    case RepositoryExample.Entity.CharacterFaction.Horde:
+        <img src="@Url.Content("~/public/images/horde.jpg")" alt="Horde" />
+        break;
+}

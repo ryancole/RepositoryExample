@@ -1,0 +1,47 @@
+﻿@model ICollection<RepositoryExample.Entity.Character>
+
+@{
+
+    var administration = false;
+
+    if (ViewData.ContainsKey("Administration") && Convert.ToBoolean(ViewData["Administration"]))
+    {
+        administration = true;
+    }
+
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@Localization.Name</th>
+            <th>@Localization.Level</th>
+            <th>@Localization.Race</th>
+            <th>@Localization.Class</th>
+            <th>@Localization.Faction</th>
+
+            @if (administration)
+            {
+                <th>@Localization.Account</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.Count > 0)
+        {
+            foreach (var character in Model)
+            {
+                @Html.Partial("_TableRowCharacter", character, ViewData)
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-muted text-center">@Localization.NoCharacters</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

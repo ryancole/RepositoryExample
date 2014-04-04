@@ -1,0 +1,35 @@
+﻿@model RepositoryExample.Entity.Character
+
+@{
+
+    var administration = false;
+
+    if (ViewData.ContainsKey("Administration") && Convert.ToBoolean(ViewData["Administration"]))
+    {
+        administration = true;
+    }
+
+}
+
+<tr class="@(Model.Active ? "" : "danger text-muted")">
+
+    @if (administration)
+    {
+        <td>@Html.ActionLink(Model.Name, "Edit", "Administration", new { id = Model.Name }, null)</td>
+    }
+    else
+    {
+        <td>@Html.ActionLink(Model.Name, "Detail", "Character", new { id = Model.Name }, null)</td>
+    }
+
+    <td>@Html.DisplayFor(m => m.Level)</td>
+    <td>@Html.DisplayFor(m => m.Race)</td>
+    <td>@Html.DisplayFor(m => m.Class)</td>
+    <td>@Html.DisplayFor(m => m.Faction)</td>
+
+    @if (administration)
+    {
+        <td>@Html.DisplayFor(m => m.Account.Email)</td>
+    }
+
+</tr>

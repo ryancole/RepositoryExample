@@ -1,0 +1,38 @@
+﻿@model RepositoryExample.Web.Models.CharacterDetailViewModel
+
+@{
+    ViewBag.Title = Model.Character.Name;
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-header clearfix">
+            <h1 class="pull-left">@Model.Character.Name <small>@Localization.Level @Model.Character.Level @Model.Character.Race @Model.Character.Class</small></h1>
+            <div class="btn-toolbar pull-right">
+                <div class="btn-group">
+
+                    @if (Model.Character.Account.AccountId == Model.Account.AccountId)
+                    {
+                        if (Model.Character.Active)
+                        {
+                            @Html.ActionLink(Localization.Delete, "Delete", "Character", new { id = Model.Character.Name }, new { @class = "btn btn-primary" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(Localization.Restore, "Undelete", "Character", new { id = Model.Character.Name }, new { @class = "btn btn-primary" })
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 text-center">
+        
+        @Html.Partial("_DetailCharacter", Model.Character)
+
+    </div>
+</div>
