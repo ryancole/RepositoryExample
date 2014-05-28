@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FluentValidation;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using RepositoryExample.Entity;
 using RepositoryExample.Service;
 using RepositoryExample.Web.Models;
+using RepositoryExample.Web.Utilities;
 
 namespace RepositoryExample.Web.Controllers
 {
@@ -146,12 +147,9 @@ namespace RepositoryExample.Web.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (ValidationException ex)
+            catch (DbEntityValidationException ex)
             {
-                foreach (var error in ex.Errors)
-                {
-                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-                }
+                ControllerUtilities.MergeValidationErrors(ModelState, ex);
             }
 
             return View(model);

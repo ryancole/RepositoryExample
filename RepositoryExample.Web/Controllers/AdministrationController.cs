@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FluentValidation;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using RepositoryExample.Entity;
 using RepositoryExample.Service;
 using RepositoryExample.Web.Models;
 using RepositoryExample.Web.Filters;
+using RepositoryExample.Web.Utilities;
 
 namespace RepositoryExample.Web.Controllers
 {
@@ -74,16 +75,14 @@ namespace RepositoryExample.Web.Controllers
                 character.Level = model.Level;
 
                 // save changes to the database
-                m_session.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch (ValidationException ex)
-            {
-                foreach (var error in ex.Errors)
+                if (m_session.SaveChanges())
                 {
-                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    return RedirectToAction("Index");
                 }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                ControllerUtilities.MergeValidationErrors(ModelState, ex);
             }
 
             return View(model);

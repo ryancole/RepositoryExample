@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using RepositoryExample.Entity;
 using RepositoryExample.Service;
 using RepositoryExample.Web.Models;
+using RepositoryExample.Web.Utilities;
 
 namespace RepositoryExample.Web.Controllers
 {
@@ -78,22 +79,22 @@ namespace RepositoryExample.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            // insert the desired account credentials
-            var account = m_session.Accounts.Insert(new Account 
-            {
-                Email = model.Email,
-                Password = model.Password,
-                IsAdmin = true
-            });
-
-            if (account == null)
-            {
-                ModelState.AddModelError("Email", "Registration failed");
-                return View(model);
-            }
-
             try
             {
+                // insert the desired account credentials
+                var account = m_session.Accounts.Insert(new Account
+                {
+                    Email = model.Email,
+                    Password = model.Password,
+                    IsAdmin = true
+                });
+
+                if (account == null)
+                {
+                    ModelState.AddModelError("Email", "Registration failed");
+                    return View(model);
+                }
+
                 // save the new account to the database
                 if (m_session.SaveChanges())
                 {
@@ -105,13 +106,7 @@ namespace RepositoryExample.Web.Controllers
             }
             catch (DbEntityValidationException ex)
             {
-                foreach (var entity in ex.EntityValidationErrors)
-                {
-                    foreach (var error in entity.ValidationErrors)
-                    {
-                        ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-                    }
-                }
+                ControllerUtilities.MergeValidationErrors(ModelState, ex);
             }
 
             return View(model);

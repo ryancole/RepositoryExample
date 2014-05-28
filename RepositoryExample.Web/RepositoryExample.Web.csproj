@@ -169,6 +169,7 @@
     <Compile Include="Models\Character\CharacterDetailViewModel.cs" />
     <Compile Include="Models\Character\CharacterIndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ControllerUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
