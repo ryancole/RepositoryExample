@@ -22,11 +22,6 @@ namespace RepositoryExample.Service
         /// </summary>
         IReadOnlyCollection<Character> GetAll();
 
-        /// <summary>
-        /// Retrieve all Characters for the given Account
-        /// </summary>
-        IReadOnlyCollection<Character> GetByAccount(Account account);
-
         #endregion
     }
 }

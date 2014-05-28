@@ -32,8 +32,7 @@ namespace RepositoryExample.Web.Controllers
             // initialize the view model, containing all characters
             var model = new CharacterIndexViewModel
             {
-                Account = account,
-                Characters = m_session.Characters.GetByAccount(account)
+                Account = account
             };
 
             return View(model);

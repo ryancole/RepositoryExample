@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using RepositoryExample.Entity;
 
 namespace RepositoryExample.Web.Models
@@ -9,7 +10,13 @@ namespace RepositoryExample.Web.Models
 
         public Account Account { get; set; }
 
-        public IReadOnlyCollection<Character> Characters { get; set; }
+        public IReadOnlyCollection<Character> Characters
+        {
+            get
+            {
+                return Account.Characters.ToList().AsReadOnly();
+            }
+        }
 
         #endregion
     }

@@ -55,17 +55,6 @@ namespace RepositoryExample.Service
                                .ToList().AsReadOnly();
         }
 
-        /// <summary>
-        /// Retireve all Characters for the given Account
-        /// </summary>
-        public IReadOnlyCollection<Character> GetByAccount(Account account)
-        {
-            return m_characters.Where(m => m.Account.AccountId == account.AccountId)
-                               .OrderByDescending(m => m.Active)
-                               .ThenBy(m => m.Name)
-                               .ToList().AsReadOnly();
-        }
-
         #endregion
     }
 }
