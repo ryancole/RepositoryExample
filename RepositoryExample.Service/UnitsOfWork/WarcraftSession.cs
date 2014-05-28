@@ -1,12 +1,12 @@
 ﻿using RepositoryExample.Data;
 using RepositoryExample.Entity;
-using RepositoryExample.Repository;
 
 namespace RepositoryExample.Service
 {
     public class WarcraftSession : IWarcraftSession
     {
-        private IWarcraftContext m_context;
+        private readonly IWarcraftContext m_context;
+
         private IAccountService m_accountService;
         private ICharacterService m_characterService;
 
@@ -39,7 +39,7 @@ namespace RepositoryExample.Service
             get
             {
                 if (m_accountService == null)
-                    m_accountService = new AccountService(new Repository<Account>(m_context));
+                    m_accountService = new AccountService(m_context.GetDbSet<Account>());
 
                 return m_accountService;
             }
@@ -50,7 +50,7 @@ namespace RepositoryExample.Service
             get
             {
                 if (m_characterService == null)
-                    m_characterService = new CharacterService(new Repository<Character>(m_context));
+                    m_characterService = new CharacterService(m_context.GetDbSet<Character>());
 
                 return m_characterService;
             }

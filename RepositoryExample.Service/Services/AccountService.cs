@@ -1,17 +1,17 @@
 ﻿using System.Linq;
 using System.Text;
+using System.Data.Entity;
 using System.Security.Cryptography;
 using FluentValidation;
 using RepositoryExample.Entity;
-using RepositoryExample.Repository;
 
 namespace RepositoryExample.Service
 {
     public class AccountService : IAccountService
     {
-        private readonly IRepository<Account> m_accounts;
+        private readonly IDbSet<Account> m_accounts;
 
-        public AccountService(IRepository<Account> accounts)
+        public AccountService(IDbSet<Account> accounts)
         {
             m_accounts = accounts;
         }
@@ -26,7 +26,7 @@ namespace RepositoryExample.Service
             // hash the given password
             account.Password = GetPasswordHash(account.Password);
 
-            return m_accounts.Insert(account);
+            return m_accounts.Add(account);
         }
 
         /// <summary>
@@ -45,7 +45,8 @@ namespace RepositoryExample.Service
         {
             var hashedPassword = GetPasswordHash(password);
 
-            return m_accounts.Where(m => m.Email.ToLower() == email.ToLower() && m.Password == hashedPassword)
+            return m_accounts.Where(m => m.Email.ToLower() == email.ToLower())
+                             .Where(m => m.Password == hashedPassword)
                              .SingleOrDefault();
         }
 

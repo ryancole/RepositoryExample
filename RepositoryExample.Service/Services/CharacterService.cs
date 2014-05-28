@@ -1,17 +1,17 @@
 ﻿using System.Linq;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using FluentValidation;
 using RepositoryExample.Entity;
-using RepositoryExample.Repository;
 
 namespace RepositoryExample.Service
 {
     public class CharacterService : ICharacterService
     {
-        private readonly IRepository<Character> m_characters;
+        private readonly IDbSet<Character> m_characters;
 
-        public CharacterService(IRepository<Character> characters)
+        public CharacterService(IDbSet<Character> characters)
         {
             m_characters = characters;
         }
@@ -33,7 +33,7 @@ namespace RepositoryExample.Service
                 character.Level = 55;
             }
 
-            return m_characters.Insert(character);
+            return m_characters.Add(character);
         }
 
         /// <summary>
@@ -50,8 +50,7 @@ namespace RepositoryExample.Service
         /// </summary>
         public ICollection<Character> GetAll()
         {
-            return m_characters.All
-                               .OrderByDescending(m => m.Active)
+            return m_characters.OrderByDescending(m => m.Active)
                                .ThenBy(m => m.Name)
                                .ToList();
         }

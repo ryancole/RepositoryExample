@@ -292,10 +292,6 @@
       <Project>{ff0618a9-1a05-494b-8da4-49f66b5fcab7}</Project>
       <Name>RepositoryExample.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RepositoryExample.Repository\RepositoryExample.Repository.csproj">
-      <Project>{41efa16c-c556-4347-9576-318062f16b7a}</Project>
-      <Name>RepositoryExample.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RepositoryExample.Resources\RepositoryExample.Resources.csproj">
       <Project>{5267ed23-1d53-4419-aebc-2ebc833e0491}</Project>
       <Name>RepositoryExample.Resources</Name>

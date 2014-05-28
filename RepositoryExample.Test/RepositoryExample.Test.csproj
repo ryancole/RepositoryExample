@@ -80,10 +80,6 @@
       <Project>{ff0618a9-1a05-494b-8da4-49f66b5fcab7}</Project>
       <Name>RepositoryExample.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RepositoryExample.Repository\RepositoryExample.Repository.csproj">
-      <Project>{41efa16c-c556-4347-9576-318062f16b7a}</Project>
-      <Name>RepositoryExample.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RepositoryExample.Service\RepositoryExample.Service.csproj">
       <Project>{3758639c-6552-4009-b470-22b112d396c8}</Project>
       <Name>RepositoryExample.Service</Name>
