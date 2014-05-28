@@ -8,11 +8,6 @@ namespace RepositoryExample.Service
         #region Methods
 
         /// <summary>
-        /// validate updates to a Character
-        /// </summary>
-        void Update(Character character);
-
-        /// <summary>
         /// Retrieve a Character with the specified Name
         /// </summary>
         Character GetByName(string name);

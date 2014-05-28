@@ -26,13 +26,6 @@ namespace RepositoryExample.Service
             // hash the given password
             account.Password = GetPasswordHash(account.Password);
 
-            // validate the new account
-            var validator = new AccountValidator(m_accounts);
-            var validationresults = validator.Validate(account, ruleSet: "default,Insert");
-
-            if (!validationresults.IsValid)
-                throw new ValidationException(validationresults.Errors);
-
             return m_accounts.Insert(account);
         }
 

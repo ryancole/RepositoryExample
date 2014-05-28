@@ -56,8 +56,6 @@
     <Compile Include="Services\IAccountService.cs" />
     <Compile Include="Services\ICharacterService.cs" />
     <Compile Include="UnitsOfWork\WarcraftSession.cs" />
-    <Compile Include="Validators\AccountValidator.cs" />
-    <Compile Include="Validators\CharacterValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RepositoryExample.Data\RepositoryExample.Data.csproj">

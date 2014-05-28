@@ -1,18 +1,22 @@
-﻿using FluentValidation;
+﻿using System.Linq;
+using System.Data.Entity;
+using FluentValidation;
 using RepositoryExample.Entity;
-using RepositoryExample.Repository;
 
-namespace RepositoryExample.Service
+namespace RepositoryExample.Data
 {
     internal class AccountValidator : AbstractValidator<Account>
     {
-        private readonly IRepository<Account> m_accounts;
+        private readonly IDbSet<Account> m_accounts;
 
-        public AccountValidator(IRepository<Account> accounts)
+        public AccountValidator(IDbSet<Account> accounts)
         {
             m_accounts = accounts;
 
-            RuleSet("Insert", () =>
+            // password validation rules
+            RuleFor(m => m.Password).NotEmpty();
+
+            RuleSet("insert", () =>
             {
 
                 // email validation rules
@@ -20,9 +24,6 @@ namespace RepositoryExample.Service
                                      .Must(EmailIsAvailable).WithMessage("{0} is not available", m => m.Email);
 
             });
-
-            // password validation rules
-            RuleFor(m => m.Password).NotEmpty();
         }
 
         #region Methods

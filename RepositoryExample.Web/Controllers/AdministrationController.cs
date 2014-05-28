@@ -73,9 +73,6 @@ namespace RepositoryExample.Web.Controllers
                 // set the new character level
                 character.Level = model.Level;
 
-                // validate updates made to a character
-                m_session.Characters.Update(character);
-
                 // save changes to the database
                 m_session.SaveChanges();
 

@@ -1,27 +1,17 @@
 ﻿using System.Linq;
+using System.Data.Entity;
 using FluentValidation;
 using RepositoryExample.Entity;
-using RepositoryExample.Repository;
 
-namespace RepositoryExample.Service
+namespace RepositoryExample.Data
 {
     internal class CharacterValidator : AbstractValidator<Character>
     {
-        private readonly IRepository<Character> m_characters;
+        private readonly IDbSet<Character> m_characters;
 
-        public CharacterValidator(IRepository<Character> characters)
+        public CharacterValidator(IDbSet<Character> characters)
         {
             m_characters = characters;
-
-            RuleSet("Insert", () =>
-            {
-
-                // name validation rules
-                RuleFor(m => m.Name).NotEmpty()
-                                    .Length(2, 12)
-                                    .Must(NameIsAvailable).WithMessage("{0} is already taken", m => m.Name);
-
-            });
 
             // level validation rules
             RuleFor(m => m.Level).NotEmpty()
@@ -43,6 +33,16 @@ namespace RepositoryExample.Service
             RuleFor(m => m.Class).NotNull()
                                  .Must(RaceAllowsClass).WithMessage("{0} cannot be a {1}", m => m.Race, m => m.Class)
                                  .Must(LevelAllowsDeathKnight).WithMessage("Death Knight requires at least one existing level 55 character");
+
+            RuleSet("insert", () =>
+            {
+
+                // name validation rules
+                RuleFor(m => m.Name).NotEmpty()
+                                    .Length(2, 12)
+                                    .Must(NameIsAvailable).WithMessage("{0} is already taken", m => m.Name);
+
+            });
         }
 
         #region Methods

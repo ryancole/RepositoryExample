@@ -19,19 +19,6 @@ namespace RepositoryExample.Service
         #region Methods
 
         /// <summary>
-        /// validate updates to a Character
-        /// </summary>
-        public void Update(Character character)
-        {
-            // perform entity validation
-            var validator = new CharacterValidator(m_characters);
-            var validationresults = validator.Validate(character);
-
-            if (!validationresults.IsValid)
-                throw new ValidationException(validationresults.Errors);
-        }
-
-        /// <summary>
         /// Insert a new Character
         /// </summary>
         public Character Insert(Character character)
@@ -45,13 +32,6 @@ namespace RepositoryExample.Service
             {
                 character.Level = 55;
             }
-
-            // perform entity validation
-            var validator = new CharacterValidator(m_characters);
-            var validationresults = validator.Validate(character, ruleSet: "default,Insert");
-
-            if (!validationresults.IsValid)
-                throw new ValidationException(validationresults.Errors);
 
             return m_characters.Insert(character);
         }
