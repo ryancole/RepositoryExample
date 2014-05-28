@@ -48,22 +48,22 @@ namespace RepositoryExample.Service
         /// <summary>
         /// Retrieve all Characters
         /// </summary>
-        public ICollection<Character> GetAll()
+        public IReadOnlyCollection<Character> GetAll()
         {
             return m_characters.OrderByDescending(m => m.Active)
                                .ThenBy(m => m.Name)
-                               .ToList();
+                               .ToList().AsReadOnly();
         }
 
         /// <summary>
         /// Retireve all Characters for the given Account
         /// </summary>
-        public ICollection<Character> GetByAccount(Account account)
+        public IReadOnlyCollection<Character> GetByAccount(Account account)
         {
             return m_characters.Where(m => m.Account.AccountId == account.AccountId)
                                .OrderByDescending(m => m.Active)
                                .ThenBy(m => m.Name)
-                               .ToList();
+                               .ToList().AsReadOnly();
         }
 
         #endregion

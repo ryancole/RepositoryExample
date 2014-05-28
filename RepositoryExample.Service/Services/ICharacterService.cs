@@ -20,12 +20,12 @@ namespace RepositoryExample.Service
         /// <summary>
         /// Retrieve all Characters
         /// </summary>
-        ICollection<Character> GetAll();
+        IReadOnlyCollection<Character> GetAll();
 
         /// <summary>
         /// Retrieve all Characters for the given Account
         /// </summary>
-        ICollection<Character> GetByAccount(Account account);
+        IReadOnlyCollection<Character> GetByAccount(Account account);
 
         #endregion
     }

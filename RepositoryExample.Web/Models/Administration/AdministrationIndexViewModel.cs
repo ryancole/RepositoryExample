@@ -7,7 +7,7 @@ namespace RepositoryExample.Web.Models
     {
         #region Properties
 
-        public ICollection<Character> Characters { get; set; }
+        public IReadOnlyCollection<Character> Characters { get; set; }
 
         #endregion
     }

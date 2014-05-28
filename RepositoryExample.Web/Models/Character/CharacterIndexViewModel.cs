@@ -9,7 +9,7 @@ namespace RepositoryExample.Web.Models
 
         public Account Account { get; set; }
 
-        public ICollection<Character> Characters { get; set; }
+        public IReadOnlyCollection<Character> Characters { get; set; }
 
         #endregion
     }
