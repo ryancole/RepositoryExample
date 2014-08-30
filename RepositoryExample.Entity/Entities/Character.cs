@@ -2,6 +2,12 @@
 {
     public class Character
     {
+        public Character()
+        {
+            Level = 1;
+            Active = true;
+        }
+
         #region Properties
 
         public int CharacterId { get; set; }
@@ -34,25 +40,37 @@
 
     public enum CharacterRace
     {
+        #region Values
+
         Orc,
         Tauren,
         BloodElf,
         Human,
         Gnome,
         Worgen
+
+        #endregion
     }
 
     public enum CharacterClass
     {
+        #region Values
+
         Warrior,
         Druid,
         DeathKnight,
         Mage
+
+        #endregion
     }
 
     public enum CharacterFaction
     {
+        #region Values
+
         Alliance,
         Horde
+
+        #endregion
     }
 }

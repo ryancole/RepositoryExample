@@ -6,7 +6,8 @@ namespace RepositoryExample.Entity
     {
         public Account()
         {
-            this.Characters = new List<Character>();
+            IsAdmin = false;
+            Characters = new List<Character>();
         }
 
         #region Properties
@@ -20,6 +21,15 @@ namespace RepositoryExample.Entity
         public string Password { get; set; }
 
         public virtual ICollection<Character> Characters { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        public override string ToString()
+        {
+            return Email;
+        }
 
         #endregion
     }
