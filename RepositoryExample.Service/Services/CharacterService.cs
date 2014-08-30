@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using FluentValidation;
+using RepositoryExample.Data;
 using RepositoryExample.Entity;
 
 namespace RepositoryExample.Service
@@ -10,10 +11,12 @@ namespace RepositoryExample.Service
     public class CharacterService : ICharacterService
     {
         private readonly IDbSet<Character> m_characters;
+        private readonly IWarcraftContext m_context;
 
-        public CharacterService(IDbSet<Character> characters)
+        public CharacterService(IWarcraftContext context)
         {
-            m_characters = characters;
+            m_context = context;
+            m_characters = m_context.GetDbSet<Character>();
         }
 
         #region Methods
@@ -23,10 +26,6 @@ namespace RepositoryExample.Service
         /// </summary>
         public Character Insert(Character character)
         {
-            // character defaults
-            character.Level = 1;
-            character.Active = true;
-
             // death knights start at 55, though
             if (character.Class == CharacterClass.DeathKnight)
             {

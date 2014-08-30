@@ -5,10 +5,10 @@ namespace RepositoryExample.Service
 {
     public class WarcraftSession : IWarcraftSession
     {
-        private readonly IWarcraftContext m_context;
-
         private IAccountService m_accountService;
         private ICharacterService m_characterService;
+
+        private readonly IWarcraftContext m_context;
 
         public WarcraftSession()
         {
@@ -39,7 +39,9 @@ namespace RepositoryExample.Service
             get
             {
                 if (m_accountService == null)
-                    m_accountService = new AccountService(m_context.GetDbSet<Account>());
+                {
+                    m_accountService = new AccountService(m_context);
+                }
 
                 return m_accountService;
             }
@@ -50,7 +52,9 @@ namespace RepositoryExample.Service
             get
             {
                 if (m_characterService == null)
-                    m_characterService = new CharacterService(m_context.GetDbSet<Character>());
+                {
+                    m_characterService = new CharacterService(m_context);
+                }
 
                 return m_characterService;
             }

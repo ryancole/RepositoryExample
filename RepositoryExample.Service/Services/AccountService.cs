@@ -3,6 +3,7 @@ using System.Text;
 using System.Data.Entity;
 using System.Security.Cryptography;
 using FluentValidation;
+using RepositoryExample.Data;
 using RepositoryExample.Entity;
 
 namespace RepositoryExample.Service
@@ -10,10 +11,12 @@ namespace RepositoryExample.Service
     public class AccountService : IAccountService
     {
         private readonly IDbSet<Account> m_accounts;
+        private readonly IWarcraftContext m_context;
 
-        public AccountService(IDbSet<Account> accounts)
+        public AccountService(IWarcraftContext context)
         {
-            m_accounts = accounts;
+            m_context = context;
+            m_accounts = m_context.GetDbSet<Account>();
         }
 
         #region Methods
