@@ -22,6 +22,14 @@ namespace RepositoryExample.Data
         }
 
         /// <summary>
+        /// Commit pending changes
+        /// </summary>
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
+
+        /// <summary>
         /// context entity bindings
         /// </summary>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

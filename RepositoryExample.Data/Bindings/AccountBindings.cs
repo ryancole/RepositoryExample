@@ -8,9 +8,10 @@ namespace RepositoryExample.Data
     {
         public AccountBindings()
         {
-            ToTable("Accounts");
-
+            // email schema bindings
             Property(m => m.Email).IsRequired();
+
+            // password schema bindings
             Property(m => m.Password).IsRequired();
         }
     }

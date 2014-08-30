@@ -8,12 +8,19 @@ namespace RepositoryExample.Data
     {
         public CharacterBindings()
         {
-            ToTable("Characters");
-
+            // name schema bindings
             Property(m => m.Name).IsRequired().HasMaxLength(12);
+
+            // race schema bindings
             Property(m => m.Race).IsRequired();
+
+            // class schema bindings
             Property(m => m.Class).IsRequired();
+
+            // level schema bindings
             Property(m => m.Level).IsRequired();
+
+            // faction schema bindings
             Property(m => m.Faction).IsRequired();
         }
     }

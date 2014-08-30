@@ -13,6 +13,9 @@ namespace RepositoryExample.Data
         {
             m_accounts = accounts;
 
+            // email validation rules
+            RuleFor(m => m.Email).NotEmpty();
+
             // password validation rules
             RuleFor(m => m.Password).NotEmpty();
 

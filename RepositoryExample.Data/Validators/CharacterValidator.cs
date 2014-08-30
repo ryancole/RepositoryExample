@@ -13,6 +13,10 @@ namespace RepositoryExample.Data
         {
             m_characters = characters;
 
+            // name validation rules
+            RuleFor(m => m.Name).NotEmpty()
+                                .Length(2, 12);
+
             // level validation rules
             RuleFor(m => m.Level).NotEmpty()
                                  .InclusiveBetween(1, 85)
