@@ -17,7 +17,7 @@ namespace RepositoryExample.Test
             {
                 var account = session.Accounts.Insert(new Account
                 {
-                    Email = "test@test.com",
+                    Email = "foobar@test.com",
                     Password = "test"
                 });
 

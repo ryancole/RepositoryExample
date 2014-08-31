@@ -17,13 +17,16 @@ namespace RepositoryExample.Test
         {
             using (var session = new WarcraftSession())
             {
+                var account = session.Accounts.GetByEmail("test@test.com");
+                Assert.IsNotNull(account);
+
                 var character = session.Characters.Insert(new Character
                 {
-                    Name = "test",
+                    Name = "foobar",
                     Race = CharacterRace.Human,
                     Class = CharacterClass.Warrior,
                     Faction = CharacterFaction.Alliance,
-                    Account = session.Accounts.GetByEmail("test@test.com")
+                    Account = account
                 });
 
                 Assert.IsNotNull(character);
@@ -50,7 +53,7 @@ namespace RepositoryExample.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CannotInsertOpposingFaction()
         {
             using (var session = new WarcraftSession())
@@ -70,7 +73,7 @@ namespace RepositoryExample.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CannotInsertBloodElfWarrior()
         {
             using (var session = new WarcraftSession())
@@ -90,7 +93,7 @@ namespace RepositoryExample.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CannotInsertHordeHuman()
         {
             using (var session = new WarcraftSession())
@@ -110,7 +113,7 @@ namespace RepositoryExample.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CannotInsertAllianceOrc()
         {
             using (var session = new WarcraftSession())
@@ -130,7 +133,7 @@ namespace RepositoryExample.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CannotInsertGnomeDruid()
         {
             using (var session = new WarcraftSession())
@@ -150,7 +153,7 @@ namespace RepositoryExample.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(DbEntityValidationException))]
         public void CannotInsertDeathKnight()
         {
             using (var session = new WarcraftSession())

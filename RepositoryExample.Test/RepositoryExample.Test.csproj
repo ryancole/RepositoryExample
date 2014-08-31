@@ -64,6 +64,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Initializers\WarcraftContextInitializer.cs" />
+    <Compile Include="Interceptors\WarcraftContextInterceptor.cs" />
     <Compile Include="Tests\CharacterServiceTests.cs" />
     <Compile Include="Tests\AccountServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
